@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Click Counter</title>
+	<title>从0数到10,000</title>
     <style>
 		body {
 			background-color: #555;
@@ -9,6 +9,11 @@
 			font-size: 16px;
 			color: #fff;
 		}
+        img {
+            display: block;
+            margin: 0 auto;
+            justify-content: center;
+        }
 
 		h1 {
 			text-align: center;
@@ -74,7 +79,7 @@
 			}
 
 			#counter {
-				font-size: 60px;
+				font-size: 30px;
 			}
 
 			button {
@@ -96,7 +101,7 @@
 
 		function incrementCounter() {
 			clickCount++;
-			document.getElementById("counter").innerHTML = "Clicks: " + clickCount;
+			document.getElementById("counter").innerHTML = "次数: " + clickCount;
 
 			if (clickCount == threshold[gifIndex]) {
 				gifIndex++;
@@ -120,7 +125,7 @@
 
 		function resetCounter() {
 			clickCount = 0;
-			document.getElementById("counter").innerHTML = "Clicks: " + clickCount;
+			document.getElementById("counter").innerHTML = "次数: " + clickCount;
 			document.getElementById("gif").src = "gif10.gif";
 			audio.src = "audio10.mp3";
 			audio.play();
