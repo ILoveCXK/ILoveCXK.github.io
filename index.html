@@ -26,7 +26,7 @@
       <img id="gif" src="gif0.gif" alt="Animated GIF">
     </div>
     <div id="audio-container">
-      <audio id="audio" src="audio0.mp3" onended="replayGifAndAudio()"></audio>
+      <audio id="audio" src="audio0.mp3"></audio>
     </div>
     <button id="button">Click Me</button>
     <div id="counter">Count: 0</div>
@@ -52,8 +52,12 @@
         counter++;
         counterDisplay.innerHTML = "Count: " + counter;
 
-        // Change gif and audio and replay
-        if (counter === 50 || counter === 100 || counter === 500 || counter === 1000 || counter === 5000 || counter === 10000) {
+        // Repeat the gif and audio
+        if (counter > 10000) {
+          counter = 0;
+          gif.src = gifs[0];
+          audio.src = audioTracks[0];
+        } else if (counter % 50 === 0) {
           var index = counter / 50;
           gif.src = gifs[index];
           audio.src = audioTracks[index];
@@ -67,7 +71,6 @@
 
       // Function to replay the gif and audio
       function replayGifAndAudio() {
-        gif.src = gifs[Math.floor(counter / 50)];
         audio.currentTime = 0;
         audio.play();
       }
