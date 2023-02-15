@@ -14,7 +14,6 @@
         margin: 20px 0;
       }
       #gif {
-        display: none;
         text-align: center;
       }
       #counter {
@@ -67,17 +66,39 @@
         sound.currentTime = 0;
         sound.play();
       }
+
+      function resetCount() {
+        count = 0;
+        document.getElementById("count").innerHTML = count;
+        document.getElementById("gif").style.display = "none";
+        let sound = document.getElementById("sound");
+        sound.pause();
+        sound.currentTime = 0;
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        let gifImg = document.getElementById("gif-img");
+        let gifSrc = gifImg.getAttribute("src");
+        gifImg.setAttribute("src", "");
+        setTimeout(function() {
+          gifImg.setAttribute("src", gifSrc);
+        }, 10);
+
+        let sound = document.getElementById("sound");
+        sound.play();
+      });
     </script>
   </head>
   <body>
     <h1>Click Counter</h1>
     <div id="gif">
-      <img id="gif-img" src="1.gif" alt="Animated GIF">
-      <audio id="sound" src="soundtrack1.mp3" preload="auto"></audio>
+      <img id="gif-img" src="https://media.giphy.com/media/l0HlKX4WBRoVylqcg/giphy.gif" alt="Animated GIF">
+      <audio id="sound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
     </div>
     <div id="counter">
       <p>Count: <span id="count">0</span></p>
       <button onclick="countClicks()">Click me</button>
+      <button onclick="resetCount()">Reset</button>
     </div>
   </body>
 </html>
