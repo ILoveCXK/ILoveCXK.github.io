@@ -1,76 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Click Counter GIF</title>
-</head>
-<body>
-	<h1>Click Counter GIF</h1>
-
-	<div id="gif-container">
-		<img id="gif" src="2.gif" alt="GIF" />
-	</div>
-
-	<div>
-		<button id="click-counter">Click Me!</button>
-		<p>Click Count: <span id="count">0</span></p>
-	</div>
-
-	<audio id="sound" src="/Users/Tiger/Desktop/GitHub/ILoveCXK.github.io/soundtrack1.mp3"></audio>
-
-	<script>
-		var count = 0;
-		var gifList = [
-			{
-				path: "/Users/Tiger/Desktop/GitHub/ILoveCXK.github.io/1.gif",
-				sound: "/Users/Tiger/Desktop/GitHub/ILoveCXK.github.io/soundtrack1.mp3",
-				thresh: 50
-			},
-			{
-				path: "",
-				sound: "path/to/sound/2.mp3",
-				thresh: 100
-			},
-			{
-				path: "path/to/gif/3.gif",
-				sound: "path/to/sound/3.mp3",
-				thresh: 500
-			},
-			{
-				path: "path/to/gif/4.gif",
-				sound: "path/to/sound/4.mp3",
-				thresh: 1000
-			},
-			{
-				path: "path/to/gif/5.gif",
-				sound: "path/to/sound/5.mp3",
-				thresh: 5000
-			},
-			{
-				path: "path/to/gif/6.gif",
-				sound: "path/to/sound/6.mp3",
-				thresh: 10000
-			}
-		];
-
-		var gif = document.getElementById("gif");
-		var sound = document.getElementById("sound");
-
-		function updateCount() {
-			count++;
-			document.getElementById("count").textContent = count;
-			gif.src = gif.src; // This line resets the GIF animation
-			sound.play();
-			for (var i = 0; i < gifList.length; i++) {
-				if (count == gifList[i].thresh) {
-					gif.src = gifList[i].path;
-					sound.src = gifList[i].sound;
-					break;
-				}
-			}
+	<title>Animated GIF and Audio Track Player</title>
+	<style>
+		/* Style for the counter */
+		#counter {
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			margin-top: 20px;
 		}
 
-		var button = document.getElementById("click-counter");
-		button.addEventListener("click", updateCount);
+		/* Style for the GIF */
+		#gif {
+			margin-top: 20px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		/* Style for the audio player */
+		#audio {
+			margin-top: 20px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		/* Style for the button */
+		#button {
+			margin-top: 20px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="counter">0</div>
+	<img id="gif" src="gif_0.gif" width="400" height="300">
+	<audio id="audio" controls>
+		<source src="audio_0.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<button id="button" onclick="incrementCounter()">Click Me!</button>
+
+	<script>
+		// Variables to keep track of the current counter, gif, and audio files
+		var counter = 0;
+		var gifFileNames = ["1.gif", "2.gif", "3.gif", "gif_500.gif", "gif_1000.gif", "gif_5000.gif", "gif_10000.gif"];
+		var audioFileNames = ["soundtrack1.mp3", "audio_50.mp3", "audio_100.mp3", "audio_500.mp3", "audio_1000.mp3", "audio_5000.mp3", "audio_10000.mp3"];
+
+		// Function to increment the counter and update the GIF and audio files
+		function incrementCounter() {
+			counter++;
+			document.getElementById("counter").innerHTML = counter;
+			if (counter == 50 || counter == 100 || counter == 500 || counter == 1000 || counter == 5000 || counter == 10000) {
+				var index = Math.log10(counter / 10);
+				document.getElementById("gif").src = gifFileNames[index];
+				document.getElementById("audio").src = audioFileNames[index];
+			}
+		}
 	</script>
 </body>
 </html>
