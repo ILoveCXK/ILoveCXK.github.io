@@ -1,42 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Click Counter</title>
-    <style>
-      #gif {
-        display: none;
-        text-align: center;
-      }
-      #counter {
-        text-align: center;
-      }
-    </style>
-    <script>
-      let count = 0;
+<head>
+	<title>Click Counter GIF</title>
+</head>
+<body>
+	<h1>Click Counter GIF</h1>
 
-      function countClicks() {
-        count++;
-        document.getElementById("count").innerHTML = count;
+	<div id="gif-container">
+		<img id="gif" src="/Users/Tiger/Desktop/GitHub/ILoveCXK.github.io/2.gif" alt="GIF" />
+	</div>
 
-        let gifImg = document.getElementById("gif-img");
-        let gifSrc = gifImg.getAttribute("src");
-        gifImg.setAttribute("src", "");
-        setTimeout(function() {
-          gifImg.setAttribute("src", gifSrc);
-        }, 10);
+	<div>
+		<button id="click-counter">Click Me!</button>
+		<p>Click Count: <span id="count">0</span></p>
+	</div>
 
-        document.getElementById("gif").style.display = "block";
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Click Counter</h1>
-    <div id="gif">
-      <img id="gif-img" src="https://media.giphy.com/media/l0HlKX4WBRoVylqcg/giphy.gif" alt="Animated GIF">
-    </div>
-    <div id="counter">
-      <p>Count: <span id="count">0</span></p>
-      <button onclick="countClicks()">Click me</button>
-    </div>
-  </body>
+	<audio id="sound" src="/Users/Tiger/Desktop/GitHub/ILoveCXK.github.io/soundtrack1.mp3"></audio>
+
+	<script>
+		var count = 0;
+		var gifList = [
+			{
+				path: "/Users/Tiger/Desktop/GitHub/ILoveCXK.github.io/1.gif",
+				sound: "/Users/Tiger/Desktop/GitHub/ILoveCXK.github.io/soundtrack1.mp3",
+				thresh: 50
+			},
+			{
+				path: "",
+				sound: "path/to/sound/2.mp3",
+				thresh: 100
+			},
+			{
+				path: "path/to/gif/3.gif",
+				sound: "path/to/sound/3.mp3",
+				thresh: 500
+			},
+			{
+				path: "path/to/gif/4.gif",
+				sound: "path/to/sound/4.mp3",
+				thresh: 1000
+			},
+			{
+				path: "path/to/gif/5.gif",
+				sound: "path/to/sound/5.mp3",
+				thresh: 5000
+			},
+			{
+				path: "path/to/gif/6.gif",
+				sound: "path/to/sound/6.mp3",
+				thresh: 10000
+			}
+		];
+
+		var gif = document.getElementById("gif");
+		var sound = document.getElementById("sound");
+
+		function updateCount() {
+			count++;
+			document.getElementById("count").textContent = count;
+			gif.src = gif.src; // This line resets the GIF animation
+			sound.play();
+			for (var i = 0; i < gifList.length; i++) {
+				if (count == gifList[i].thresh) {
+					gif.src = gifList[i].path;
+					sound.src = gifList[i].sound;
+					break;
+				}
+			}
+		}
+
+		var button = document.getElementById("click-counter");
+		button.addEventListener("click", updateCount);
+	</script>
+</body>
 </html>
