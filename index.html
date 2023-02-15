@@ -1,99 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Click Counter</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    h1 {
-      font-size: 36px;
-    }
-
-    #gif {
-      display: none;
-      margin-top: 20px;
-    }
-
-    button {
-      margin-top: 20px;
-      font-size: 24px;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #3e8e41;
-    }
-  </style>
-</head>
-<body>
-  <h1>Click Counter</h1>
-  <button onclick="countClicks()">Click me!</button>
-  <div id="gif">
-    <img id="gif-img" src="" alt="GIF">
-    <audio id="sound" src=""></audio>
-  </div>
-  <p>Click count: <span id="count">0</span></p>
-  <button onclick="resetCount()">Reset count</button>
-
-  <script>
-    let count = parseInt(localStorage.getItem("clickCount")) || 0;
-
-    const gifThresholds = [
-      { threshold: 10, gif: "1.gif" },
-      { threshold: 50, gif: "2.gif" },
-      { threshold: 100, gif: "3.gif" },
-      { threshold: 500, gif: "4.gif" },
-      { threshold: 1000, gif: "5.gif" },
-      { threshold: 5000, gif: "6.gif" },
-      { threshold: 10000, gif: "7.gif" },
-      { threshold: 50000, gif: "8.gif" },
-      { threshold: 100000, gif: "9.gif" },
-      { threshold: 1000000, gif: "10.gif" },
-      { threshold: 10000000, gif: "11.gif" },
-      { threshold: 100000000, gif: "12.gif" }
-    ];
-
-    const soundtracks = [
-      "soundtrack1.mp3",
-      "soundtrack2.mp3",
-      "soundtrack3.mp3",
-      // Add more soundtracks here
-    ];
-
-    function getGifNumber(count) {
-      for (let i = 0; i < gifThresholds.length; i++) {
-        if (count < gifThresholds[i].threshold) {
-          return i;
-        }
+  <head>
+    <title>Click Counter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
       }
-      return null;
-    }
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+      }
+      #gif {
+        display: none;
+        text-align: center;
+      }
+      #counter {
+        text-align: center;
+        margin-top: 20px;
+      }
+      #count {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 24px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #3e8e41;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+    <script>
+      let count = parseInt(localStorage.getItem("clickCount")) || 0;
 
-    function countClicks() {
-      count++;
-      document.getElementById("count").innerHTML = count;
-      localStorage.setItem("clickCount", count);
+      function countClicks() {
+        count++;
+        document.getElementById("count").innerHTML = count;
+        localStorage.setItem("clickCount", count);
 
-      let gifImg = document.getElementById("gif-img");
-      let gifSrc = gifImg.getAttribute("src");
-      gifImg.setAttribute("src", "");
-      setTimeout(function() {
-        gifImg.setAttribute("src", gifSrc);
-      }, 10);
+        let gifImg = document.getElementById("gif-img");
+        let gifSrc = gifImg.getAttribute("src");
+        gifImg.setAttribute("src", "");
+        setTimeout(function() {
+          gifImg.setAttribute("src", gifSrc);
+        }, 10);
 
-      let gifNumber = getGifNumber(count);
-      if (gifNumber !== null) {
-        gifImg.setAttribute("src", `gifs/${gifThresholds[gifNumber].gif}`);
-        let soundtrackIndex = gifNumber;
+        let gifNumber = getGifNumber(count);
+        if (gifNumber !== null) {
+          gifImg.setAttribute("src", `gifs/${gifNumber}.gif`);
+        }
+
+        document.getElementById("gif").style.display = "block";
+
         let sound = document.getElementById("sound");
-        sound.setAttribute("src", soundtracks[soundtrackIndex]);
+        sound.pause();
+        sound.currentTime = 0;
+        sound.play();
+      }
+
+      function resetCounter() {
+        count = 0;
+        document.getElementById("count").innerHTML = count;
+        localStorage.setItem("clickCount", count);
+
+        let gifImg = document.getElementById("gif-img");
+        gifImg.setAttribute("src", "");
+        document.getElementById("gif").style.display = "none";
+      }
+
+      function getGifNumber(clicks) {
+        const gifNumbers = [10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000, 1000000, 10000000, 100000000];
+        for (let i = gifNumbers.length - 1; i >= 0; i--) {
+          if (clicks >= gifNumbers[i]) {
+            return i + 1;
+          }
+        }
+        return null;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Click Counter</h1>
+    <div id="gif">
+      <img id="gif-img" src="" alt="Animated GIF">
+      <audio id="sound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
+    </div>
+    <div id="counter">
+      <p>Count: <span id="count">0</span></p>
+      <button onclick="countClicks()">Click me</button>
+      <button onclick="resetCounter()">Reset</button
