@@ -1,66 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Animated GIF and Audio Track Player</title>
-	<style>
-		/* Style for the counter */
-		#counter {
-			font-size: 24px;
-			font-weight: bold;
-			text-align: center;
-			margin-top: 20px;
-		}
+  <head>
+    <meta charset="UTF-8">
+    <title>Animated GIF and Audio Track</title>
+    <style>
+      #gif-container {
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+      }
 
-		/* Style for the GIF */
-		#gif {
-			margin-top: 20px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-		}
+      #gif {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
 
-		/* Style for the audio player */
-		#audio {
-			margin-top: 20px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-		}
+      #audio-container {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gif-container">
+      <img id="gif" src="1.gif" alt="Animated GIF">
+    </div>
+    <div id="audio-container">
+      <audio id="audio" src="soundtrack1.mp3"></audio>
+    </div>
+    <button id="button">Click Me</button>
+    <div id="counter">Count: 0</div>
+    <script>
+      // Define variables
+      var counter = 0;
+      var gif = document.getElementById("gif");
+      var audio = document.getElementById("audio");
+      var button = document.getElementById("button");
+      var counterDisplay = document.getElementById("counter");
 
-		/* Style for the button */
-		#button {
-			margin-top: 20px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-		}
-	</style>
-</head>
-<body>
-	<div id="counter">0</div>
-	<img id="gif" src="1.gif" width="400" height="300">
-	<audio id="audio" controls>
-		<source src="soundtrack1.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-	</audio>
-	<button id="button" onclick="incrementCounter()">Click Me!</button>
+      // Define array of gif and audio filenames
+      var gifs = ["2.gif", "1.gif", "gif100.gif", "gif500.gif", "gif1000.gif", "gif5000.gif", "gif10000.gif"];
+      var audioTracks = ["soundtrack1.mp3", "audio50.mp3", "audio100.mp3", "audio500.mp3", "audio1000.mp3", "audio5000.mp3", "audio10000.mp3"];
 
-	<script>
-		// Variables to keep track of the current counter, gif, and audio files
-		var counter = 0;
-		var gifFileNames = ["2.gif", "1.gif", "3.gif", "gif_500.gif", "gif_1000.gif", "gif_5000.gif", "gif_10000.gif"];
-		var audioFileNames = ["soundtrack1.mp3", "audio_50.mp3", "audio_100.mp3", "audio_500.mp3", "audio_1000.mp3", "audio_5000.mp3", "audio_10000.mp3"];
+      // Add event listener to button
+      button.addEventListener("click", function() {
+        // Increment counter
+        counter++;
+        counterDisplay.innerHTML = "Count: " + counter;
 
-		// Function to increment the counter and update the GIF and audio files
-		function incrementCounter() {
-			counter++;
-			document.getElementById("counter").innerHTML = counter;
-			if (counter == 50 || counter == 100 || counter == 500 || counter == 1000 || counter == 5000 || counter == 10000) {
-				var index = Math.log10(counter / 10);
-				document.getElementById("gif").src = gifFileNames[index];
-				document.getElementById("audio").src = audioFileNames[index];
-			}
-		}
-	</script>
-</body>
+        // Change gif and audio
+        if (counter === 50 || counter === 100 || counter === 500 || counter === 1000 || counter === 5000 || counter === 10000) {
+          var index = counter / 50;
+          gif.src = gifs[index];
+          audio.src = audioTracks[index];
+          audio.play();
+        }
+      });
+    </script>
+  </body>
 </html>
