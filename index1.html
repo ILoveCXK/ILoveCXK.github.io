@@ -3,32 +3,25 @@
 <head>
 	<title>Animated GIF and Audio Track Player</title>
 	<style>
-		body {
-			background-color: #ECECEC;
-		}
-
 		/* Style for the counter */
 		#counter {
-			font-size: 48px;
+			font-size: 24px;
 			font-weight: bold;
 			text-align: center;
 			margin-top: 20px;
-			color: #334257;
 		}
 
 		/* Style for the GIF */
 		#gif {
-			margin-top: 50px;
+			margin-top: 20px;
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
-			border: 5px solid #4D4D4D;
-			border-radius: 10px;
 		}
 
 		/* Style for the audio player */
 		#audio {
-			margin-top: 30px;
+			margin-top: 20px;
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
@@ -36,50 +29,10 @@
 
 		/* Style for the button */
 		#button {
-			margin-top: 30px;
+			margin-top: 20px;
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
-			background-color: #334257;
-			color: #ECECEC;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			font-size: 24px;
-			cursor: pointer;
-			transition: all 0.3s ease;
-		}
-
-		#button:hover {
-			background-color: #4D4D4D;
-		}
-
-		/* Style for the background text */
-		.background-text {
-			position: absolute;
-			font-size: 24px;
-			color: #4D4D4D;
-			user-select: none;
-		}
-
-		.background-text:nth-of-type(1) {
-			top: 10%;
-			left: 20%;
-		}
-
-		.background-text:nth-of-type(2) {
-			top: 20%;
-			left: 60%;
-		}
-
-		.background-text:nth-of-type(3) {
-			top: 50%;
-			left: 30%;
-		}
-
-		.background-text:nth-of-type(4) {
-			top: 70%;
-			left: 70%;
 		}
 	</style>
 </head>
@@ -91,12 +44,6 @@
 		Your browser does not support the audio element.
 	</audio>
 	<button id="button" onclick="incrementCounter()">Click Me!</button>
-
-	<!-- Background text -->
-	<div class="background-text">CXK</div>
-	<div class="background-text">IKUN</div>
-	<div class="background-text">HAHA</div>
-	<div class="background-text">123</div>
 
 	<script>
 		// Variables to keep track of the current counter, gif, and audio files
