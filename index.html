@@ -34,12 +34,22 @@
 				}
 				document.getElementById("gif").src = "gif" + threshold[gifIndex] + ".gif";
 				audio.src = "audio" + threshold[audioIndex] + ".mp3";
+				audio.play();
+			}
+			else {
+				document.getElementById("gif").src = document.getElementById("gif").src;
+				audio.play();
 			}
 		}
 
 		function resetCounter() {
 			clickCount = 0;
 			document.getElementById("counter").innerHTML = "Clicks: " + clickCount;
+			document.getElementById("gif").src = "gif10.gif";
+			audio.src = "audio10.mp3";
+			audio.play();
+			gifIndex = 0;
+			audioIndex = 0;
 		}
 	</script>
 </head>
