@@ -54,72 +54,30 @@
         document.getElementById("count").innerHTML = count;
 
         let gifImg = document.getElementById("gif-img");
+        let gifSrc = gifImg.getAttribute("src");
+        gifImg.setAttribute("src", "");
+        setTimeout(function() {
+          gifImg.setAttribute("src", gifSrc);
+        }, 10);
+
+        document.getElementById("gif").style.display = "block";
+
         let sound = document.getElementById("sound");
-
-        if (count >= 100000000) {
-          gifImg.setAttribute("src", "100000000.gif");
-          sound.setAttribute("src", "100000000.mp3");
-        } else if (count >= 10000000) {
-          gifImg.setAttribute("src", "10000000.gif");
-          sound.setAttribute("src", "10000000.mp3");
-        } else if (count >= 5000000) {
-          gifImg.setAttribute("src", "5000000.gif");
-          sound.setAttribute("src", "5000000.mp3");
-        } else if (count >= 1000000) {
-          gifImg.setAttribute("src", "1000000.gif");
-          sound.setAttribute("src", "1000000.mp3");
-        } else if (count >= 50000) {
-          gifImg.setAttribute("src", "50000.gif");
-          sound.setAttribute("src", "50000.mp3");
-        } else if (count >= 10000) {
-          gifImg.setAttribute("src", "10000.gif");
-          sound.setAttribute("src", "10000.mp3");
-        } else if (count >= 5000) {
-          gifImg.setAttribute("src", "5000.gif");
-          sound.setAttribute("src", "5000.mp3");
-        } else if (count >= 1000) {
-          gifImg.setAttribute("src", "1000.gif");
-          sound.setAttribute("src", "1000.mp3");
-        } else if (count >= 500) {
-          gifImg.setAttribute("src", "500.gif");
-          sound.setAttribute("src", "500.mp3");
-        } else if (count >= 50) {
-          gifImg.setAttribute("src", "50.gif");
-          sound.setAttribute("src", "50.mp3");
-        } else if (count >= 10) {
-          gifImg.setAttribute("src", "10.gif");
-          sound.setAttribute("src", "10.mp3");
-        }
-
-        if (count >= 10) {
-          document.getElementById("gif").style.display = "block";
-        }
-
-       
-      }
-
-      function resetCount() {
-        count = 0;
-        document.getElementById("count").innerHTML = count;
-        document.getElementById("gif").style.display = "none";
-        document.getElementById("gif-img").setAttribute("src", "");
-        document.getElementById("sound").setAttribute("src", "");
+        sound.pause();
+        sound.currentTime = 0;
+        sound.play();
       }
     </script>
   </head>
   <body>
     <h1>Click Counter</h1>
     <div id="gif">
-      <img id="gif-img" src="" alt="GIF">
-      <audio id="sound" autoplay="autoplay">
-        <source src="" type="audio/mp3">
-      </audio>
+      <img id="gif-img" src="1.gif" alt="Animated GIF">
+      <audio id="sound" src="soundtrack1.mp3" preload="auto"></audio>
     </div>
     <div id="counter">
-      <p>Number of clicks:</p>
-      <p id="count">0</p>
-      <button onclick="countClicks()">Click me!</button>
-      <button onclick="resetCount()">Reset</button>
+      <p>Count: <span id="count">0</span></p>
+      <button onclick="countClicks()">Click me</button>
     </div>
   </body>
 </html>
