@@ -2,86 +2,6 @@
 <html>
 <head>
 	<title>Animated GIF and Audio Track Player</title>
-	<style>
-		body {
-			background-color: #ECECEC;
-		}
-
-		/* Style for the counter */
-		#counter {
-			font-size: 48px;
-			font-weight: bold;
-			text-align: center;
-			margin-top: 20px;
-			color: #334257;
-		}
-
-		/* Style for the GIF */
-		#gif {
-			margin-top: 50px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			border: 5px solid #4D4D4D;
-			border-radius: 10px;
-		}
-
-		/* Style for the audio player */
-		#audio {
-			margin-top: 30px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		/* Style for the button */
-		#button {
-			margin-top: 30px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			background-color: #334257;
-			color: #ECECEC;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			font-size: 24px;
-			cursor: pointer;
-			transition: all 0.3s ease;
-		}
-
-		#button:hover {
-			background-color: #4D4D4D;
-		}
-
-		/* Style for the background text */
-		.background-text {
-			position: absolute;
-			font-size: 24px;
-			color: #4D4D4D;
-			user-select: none;
-		}
-
-		.background-text:nth-of-type(1) {
-			top: 10%;
-			left: 20%;
-		}
-
-		.background-text:nth-of-type(2) {
-			top: 20%;
-			left: 60%;
-		}
-
-		.background-text:nth-of-type(3) {
-			top: 50%;
-			left: 30%;
-		}
-
-		.background-text:nth-of-type(4) {
-			top: 70%;
-			left: 70%;
-		}
-	</style>
 </head>
 <body>
 	<div id="counter">0</div>
@@ -92,26 +12,25 @@
 	</audio>
 	<button id="button" onclick="incrementCounter()">Click Me!</button>
 
-	<!-- Background text -->
-	<div class="background-text">CXK</div>
-	<div class="background-text">IKUN</div>
-	<div class="background-text">HAHA</div>
-	<div class="background-text">123</div>
-
 	<script>
 		// Variables to keep track of the current counter, gif, and audio files
 		var counter = 0;
-		var gifFileNames = ["1.gif", "2.gif", "3.gif", "gif_500.gif", "gif_1000.gif", "gif_5000.gif", "gif_10000.gif"];
-		var audioFileNames = ["soundtrack1.mp3", "audio_50.mp3", "audio_100.mp3", "audio_500.mp3", "audio_1000.mp3", "audio_5000.mp3", "audio_10000.mp3"];
+		var gifFileNames = ["gif_0.gif", "gif_50.gif", "gif_100.gif", "gif_500.gif", "gif_1000.gif", "gif_5000.gif", "gif_10000.gif"];
+		var audioFileNames = ["audio_0.mp3", "audio_50.mp3", "audio_100.mp3", "audio_500.mp3", "audio_1000.mp3", "audio_5000.mp3", "audio_10000.mp3"];
+		var audio = document.getElementById("audio");
+		var gif = document.getElementById("gif");
 
-		// Function to increment the counter and update the GIF and audio files
+		// Function to update the counter, GIF, and audio file
 		function incrementCounter() {
-			counter++;
+			counter += 1;
 			document.getElementById("counter").innerHTML = counter;
-			if (counter == 50 || counter == 100 || counter == 500 || counter == 1000 || counter == 5000 || counter == 10000) {
-				var index = Math.log10(counter / 10);
-				document.getElementById("gif").src = gifFileNames[index];
-				document.getElementById("audio").src = audioFileNames[index];
+
+			if (counter === 50 || counter === 100 || counter === 500 || counter === 1000 || counter === 5000 || counter === 10000) {
+				var index = gifFileNames.indexOf("gif_" + counter + ".gif");
+				if (index !== -1) {
+					gif.src = gifFileNames[index];
+					audio.src = audioFileNames[index];
+				}
 			}
 		}
 	</script>
