@@ -2,54 +2,88 @@
 <html>
 <head>
 	<title>Click Counter</title>
-	<style>
+    <style>
 		body {
-			background-color: #34495e;
-			color: white;
-			font-family: 'Impact', sans-serif;
-			font-size: 48px;
-			text-align: center;
-			margin-top: 100px;
+			background-color: #555;
+			font-family: 'Helvetica Neue', sans-serif;
+			font-size: 16px;
+			color: #fff;
 		}
+
 		h1 {
-			font-size: 72px;
-			margin-bottom: 50px;
-			text-shadow: 4px 4px #2c3e50;
-		}
-		#counter {
-			font-size: 72px;
-			margin-bottom: 50px;
-			text-shadow: 4px 4px #2c3e50;
-		}
-		img {
-			border: 5px solid white;
-			box-shadow: 5px 5px #2c3e50;
-			margin-bottom: 50px;
-			width: 500px;
-			height: auto;
-		}
-		button {
-			background-color: #3498db;
-			border: none;
-			color: white;
-			font-size: 48px;
-			padding: 20px 50px;
 			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			margin-bottom: 50px;
-			box-shadow: 5px 5px #2c3e50;
+			margin-top: 50px;
+			font-size: 40px;
+			text-transform: uppercase;
+			letter-spacing: 5px;
+			color: #aaa;
 		}
-		button:hover {
-			background-color: #2980b9;
+
+		#counter {
+			display: block;
+			text-align: center;
+			font-size: 80px;
+			margin-top: 100px;
+			color: #fff;
+			text-shadow: 2px 2px #666;
+		}
+
+		button {
+			display: block;
+			margin: 0 auto;
+			padding: 20px;
+			border: none;
+			background-color: #3498db;
+			color: #fff;
+			font-size: 20px;
+			border-radius: 5px;
 			cursor: pointer;
+			box-shadow: 2px 2px #666;
 		}
-		#reset {
-			background-color: #e74c3c;
-			box-shadow: 5px 5px #c0392b;
+
+		button:focus {
+			outline: none;
 		}
-		#reset:hover {
-			background-color: #c0392b;
+
+		#gif-container {
+			display: flex;
+			justify-content: center;
+			margin-top: 50px;
+		}
+
+		#reset-button {
+			display: block;
+			margin: 50px auto 0;
+			padding: 20px;
+			border: none;
+			background-color: #3498db;
+			color: #fff;
+			font-size: 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			box-shadow: 2px 2px #666;
+		}
+
+		#reset-button:focus {
+			outline: none;
+		}
+
+		@media screen and (max-width: 600px) {
+			h1 {
+				font-size: 30px;
+			}
+
+			#counter {
+				font-size: 60px;
+			}
+
+			button {
+				font-size: 16px;
+			}
+
+			#reset-button {
+				font-size: 16px;
+			}
 		}
 	</style>
 	<script>
