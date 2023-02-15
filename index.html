@@ -82,7 +82,7 @@
     function countClicks() {
       count++;
       document.getElementById("count").innerHTML = count;
-      //localStorage.setItem("clickCount", count);
+      localStorage.setItem("clickCount", count);
 
       let gifImg = document.getElementById("gif-img");
       let gifSrc = gifImg.getAttribute("src");
@@ -97,15 +97,3 @@
         let soundtrackIndex = gifNumber;
         let sound = document.getElementById("sound");
         sound.setAttribute("src", soundtracks[soundtrackIndex]);
-        sound.pause();
-        sound.currentTime = 0;
-    sound.load();
-  }
-
-  document.getElementById("gif").style.display = "block";
-
-  let sound = document.getElementById("sound");
-  sound.pause();
-  sound.currentTime = 0;
-  sound.play();
-}
