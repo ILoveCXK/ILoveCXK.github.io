@@ -107,6 +107,7 @@
 
 		function incrementCounter() {
 			clickCount++;
+			localStorage.setItem("clickCount", clickCount)
 			document.getElementById("counter").innerHTML = "次数: " + clickCount;
 
 			if (clickCount == threshold[gifIndex]) {
@@ -138,9 +139,18 @@
 			gifIndex = 0;
 			audioIndex = 0;
 		}
+
+		function onPageLoad() {
+			var stored_click_count = localStorage.getItem("clickCount")
+			clickCount = stored_click_count
+			document.getElementById("counter").innerHTML = "次数: " + clickCount;
+		}
+
+		window.onload = onPageLoad()
 	</script>
 </head>
 <body>
+
 	<h1>从0数到10,000</h1>
 	<p id="counter">次数: 0</p>
 	<img id="gif" src="gif10.gif" />
