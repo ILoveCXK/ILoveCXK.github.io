@@ -4,12 +4,13 @@ var audio = new Audio();
 var threshold = [10, 50, 100, 500, 1000];
 var gifIndex = 0;
 var audioIndex = 0;
+var max = 200;
 
 function incrementCounter() {
     clickCount++;
     localStorage.setItem("clickCount", clickCount)
     document.getElementById("counter").innerHTML = "次数: " + clickCount;
-    document.getElementById('progressbar').progress('increment');
+    $('#eg').progress('increment');
     if (clickCount == threshold[gifIndex]) {
         gifIndex++;
         audioIndex++;
@@ -33,6 +34,7 @@ function incrementCounter() {
 function resetCounter() {
     clickCount = 0;
     document.getElementById("counter").innerHTML = "次数: " + clickCount;
+    $('#eg').progress('reset');
     document.getElementById("gif").src = "gif10.gif";
     audio.src = "audio10.mp3";
     audio.play();
@@ -44,6 +46,7 @@ function onPageLoad() {
     var stored_click_count = localStorage.getItem("clickCount")
     clickCount = stored_click_count
     document.getElementById("counter").innerHTML = "次数: " + clickCount;
+    $('#eg').progress('set progress', stored_click_count);
 }
 
 window.onload = onPageLoad()

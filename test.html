@@ -5,7 +5,10 @@
 	<title>从0数到10,000</title>
 	<script src="js/test.js"></script>
 	<link rel="stylesheet" href="css/styling.css">
-	
+	<div class="ui big progress" id="progressBar1">
+		<div class="bar"></div>
+		<div class="label">进度</div>
+	</div>
 
 </head>
 <body>
@@ -21,12 +24,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 	<script src="js/test.js"></script>
 
-	<div class="ui teal progress" data-value="1" data-total="200" id="progressbar">
-		<div class="bar">
-		  <div class="progress" max="200" value="1"></div>
-		</div>
+	<div class="ui big progress", onclick="incrementCounter()" id="progressBar2">
+		<div class="bar"></div>
 		<div class="label">进度</div>
-	  </div>
 	</div>
+
 </body>
 </html>

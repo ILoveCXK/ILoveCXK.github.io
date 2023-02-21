@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		sus
+	</title>
+    <link rel="stylesheet" href="css/styling.css">
+	<link rel="stylesheet"
+		href=
+"https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+	<script src=
+"https://code.jquery.com/jquery-3.1.1.min.js">
+	</script>
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
+	</script>
+</head>
+
+<body>
+	<div class="ui container center aligned">
+
+		<h1>
+			从0数到10,000
+		</h1>
+
+        <p class="header ui" id="counter">
+            次数: 0
+        </p>
+
+        <img id="gif" src="gif10.gif" />
+        <audio id="audio" autoplay loop>
+            <source src="audio10.mp3" type="audio/mpeg">
+        </audio>
+        <h3>加油</h3>
+        <button class="positive ui button", onclick="incrementCounter()">点击这里!</button>
+        <button class="negative ui button", id="reset" onclick="resetCounter()">重置</button>
+		
+        
+		<div class="ui big indicating progress"
+            data-value="1" data-total="100"
+			id="eg" onclick="increase()">
+			<div class="bar"></div>
+			<div class="label">进度</div>
+		</div>
+	</div>
+
+	<script src="js/test.js"></script>
+</body>
+
+</html>
