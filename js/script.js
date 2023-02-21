@@ -9,7 +9,6 @@ function incrementCounter() {
     clickCount++;
     localStorage.setItem("clickCount", clickCount)
     document.getElementById("counter").innerHTML = "次数: " + clickCount;
-    document.getElementById('progressbar').progress('increment');
     if (clickCount == threshold[gifIndex]) {
         gifIndex++;
         audioIndex++;
