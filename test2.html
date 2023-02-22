@@ -3,7 +3,7 @@
 
 <head>
 	<title>
-		sus
+		jinitaimei
 	</title>
     <link rel="stylesheet" href="css/styling.css">
 	<link rel="stylesheet"
@@ -20,29 +20,103 @@
 <body>
 	<div class="ui container center aligned">
 
-		<h1>
-			从0数到10,000
-		</h1>
+        <div class="ui attached stackable menu">
+            <div class="ui container">
+              <a class="item">
+                <i class="home icon"></i> Home
+              </a>
+              <a class="item">
+                <i class="grid layout icon"></i> Browse
+              </a>
+              <a class="item">
+                <i class="mail icon"></i> Messages
+              </a>
+              <div class="ui simple dropdown item">
+                More
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <a class="item"><i class="edit icon"></i> Edit Profile</a>
+                  <a class="item"><i class="globe icon"></i> Choose Language</a>
+                  <a class="item"><i class="settings icon"></i> Account Settings</a>
+                </div>
+              </div>
+              <div class="right item">
+                <div class="ui input"><input type="text" placeholder="Search..."></div>
+              </div>
+            </div>
+        </div>
 
-        <p class="header ui" id="counter">
-            次数: 0
-        </p>
+        <div class="ui container right aligned">  
+            <audio id="audio" autoplay loop>
+                <source src="audio10.mp3" type="audio/mpeg">
+            </audio>
+                        
+            <div class="ui big indicating progress"
+                data-value="1" data-total="100"
+                id="eg" onclick="increase()">
+                <div class="bar"></div>
+                <div class="label"></div>
+            </div>
+        </div>
 
-        <img id="gif" src="gif10.gif" />
-        <audio id="audio" autoplay loop>
-            <source src="audio10.mp3" type="audio/mpeg">
-        </audio>
-        <h3>加油</h3>
-        <button class="positive ui button", onclick="incrementCounter()">点击这里!</button>
-        <button class="negative ui button", id="reset" onclick="resetCounter()">重置</button>
-		
-        
-		<div class="ui big indicating progress"
-            data-value="1" data-total="100"
-			id="eg" onclick="increase()">
-			<div class="bar"></div>
-			<div class="label">进度</div>
-		</div>
+        <br></br>
+        <br></br>
+
+        <div class="ui two colomn doubling stackable fluid grid container center aligned">
+            <div class = "colomn left aligned">
+                <h1>
+                    从0数到10,000
+                </h1>
+                <p class="header ui" id="counter">
+                    次数: 0
+                </p>
+                <button class="huge circular positive ui button", onclick="incrementCounter()">点击这里!</button>
+                <button class="huge circular negative ui button", id="reset" onclick="resetCounter()">重置</button>
+            </div>
+
+            <div class="ui hidden vertical divider"></div>
+
+            <div class = "colomn right aligned">
+                <img class = "big ui image" id="gif" src="gif10.gif" />
+            </div>
+            
+        </div>
+
+        <br></br>
+        <br></br>
+
+        <div class="ui four colomn fluid grid container center aligned">
+            <div class = "colomn left aligned">
+                <img class = "ui small image" id="im1" src="cxk2.jpeg" />
+            </div>
+
+            <div class="ui hidden vertical divider"></div>
+            <div class = "colomn">
+                <img class = "ui small image" id="im1" src="cxk1.jpeg" />
+            </div>
+
+            <div class="ui hidden vertical divider"></div>
+            <div class = "colomn">
+                <img class = "ui small image" id="im1" src="cxk3.jpeg" />
+            </div>
+
+            <div class="ui hidden vertical divider"></div>
+            <div class = "colomn right aligned">
+                <img class = "ui small image" id="im1" src="cxk4.jpeg" />
+            </div>
+
+            <div class="ui hidden vertical divider"></div>
+            <div class = "colomn right aligned">
+                <img class = "ui small image" id="im1" src="cxk5.jpeg" />
+            </div>
+
+            <div class="ui hidden vertical divider"></div>
+            <div class = "colomn right aligned">
+                <img class = "ui small image" id="im1" src="cxk6.jpeg" />
+            </div>
+            
+        </div>
+
 	</div>
 
 	<script src="js/test.js"></script>
