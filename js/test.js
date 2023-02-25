@@ -11,6 +11,8 @@ function incrementCounter() {
     localStorage.setItem("clickCount", clickCount)
     document.getElementById("counter").innerHTML = "次数: " + clickCount;
     $('#eg').progress('increment');
+    $('#click').transition({animation: 'pulse', duration : '120ms'});
+    $('#im' + (clickCount % 6).toString()).transition({animation: 'tada', duration : '400ms'});
     if (clickCount == threshold[gifIndex]) {
         gifIndex++;
         audioIndex++;

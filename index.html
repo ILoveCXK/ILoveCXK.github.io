@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div class="ui container center aligned">
+	<div class="ui fluid container center aligned">
 
         <div class="ui attached stackable menu">
             <div class="ui container">
@@ -41,15 +41,15 @@
             </div>
         </div>
 
-        <div class="ui container right aligned">  
+        <div class="ui fluid container right aligned">  
             <audio id="audio" autoplay loop>
                 <source src="audio10.mp3" type="audio/mpeg">
             </audio>
                         
-            <div class="ui big indicating progress"
-                data-value="1" data-total="100"
+            <div class="ui fluid big indicating progress"
+                data-value="1" data-total="200"
                 id="eg" onclick="increase()">
-                <div class="bar"></div>
+                <div class="bar"><div class="progress"></div></div>
                 <div class="label"></div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                 <p class="header ui" id="counter">
                     次数: 0
                 </p>
-                <button class="huge circular positive ui button", onclick="incrementCounter()">点击这里!</button>
+                <button class="huge circular positive ui button", id = "click" onclick="incrementCounter()">点击这里!</button>
                 <button class="huge circular negative ui button", id="reset" onclick="resetCounter()">重置</button>
             </div>
 
@@ -79,35 +79,36 @@
 
         <br></br>
         <br></br>
+        <br></br>
 
         <div class="ui four colomn fluid grid container center aligned">
             <div class = "colomn left aligned">
-                <img class = "ui small image" id="im1" src="cxk2.jpeg" />
+                <img class = "ui rounded small image" id="im0" src="cxk2.jpeg" />
             </div>
 
             <div class="ui hidden vertical divider"></div>
             <div class = "colomn">
-                <img class = "ui small image" id="im1" src="cxk1.jpeg" />
+                <img class = "ui rounded small image" id="im1" src="cxk1.jpeg" />
             </div>
 
             <div class="ui hidden vertical divider"></div>
             <div class = "colomn">
-                <img class = "ui small image" id="im1" src="cxk3.jpeg" />
+                <img class = "ui rounded small image" id="im2" src="cxk3.jpeg" />
             </div>
 
             <div class="ui hidden vertical divider"></div>
             <div class = "colomn right aligned">
-                <img class = "ui small image" id="im1" src="cxk4.jpeg" />
+                <img class = "ui rounded small image" id="im3" src="cxk4.jpeg" />
             </div>
 
             <div class="ui hidden vertical divider"></div>
             <div class = "colomn right aligned">
-                <img class = "ui small image" id="im1" src="cxk5.jpeg" />
+                <img class = "ui rounded small image" id="im4" src="cxk5.jpeg" />
             </div>
 
             <div class="ui hidden vertical divider"></div>
             <div class = "colomn right aligned">
-                <img class = "ui small image" id="im1" src="cxk6.jpeg" />
+                <img class = "ui rounded small image" id="im5" src="cxk6.jpeg" />
             </div>
             
         </div>
