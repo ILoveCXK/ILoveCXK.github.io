@@ -1,10 +1,10 @@
 var clickCount = 0;
 var gif = new Image();
 var audio = new Audio();
-var threshold = [10, 50, 100, 500, 1000];
+var threshold = [100, 1000, 5000, 10000, 50000];
 var gifIndex = 0;
 var audioIndex = 0;
-var max = 200;
+var max = 100000;
 
 function incrementCounter() {
     clickCount++;
@@ -37,18 +37,18 @@ function resetCounter() {
     clickCount = 0;
     document.getElementById("counter").innerHTML = "次数: " + clickCount;
     $('#eg').progress('reset');
-    document.getElementById("gif").src = "gif10.gif";
-    audio.src = "audio10.mp3";
+    document.getElementById("gif").src = "gif100.gif";
+    audio.src = "audio100.mp3";
     audio.play();
     gifIndex = 0;
     audioIndex = 0;
 }
 
 function onPageLoad() {
-    var stored_click_count = localStorage.getItem("clickCount")
-    clickCount = stored_click_count
+    // var stored_click_count = localStorage.getItem("clickCount")
+    // clickCount = stored_click_count
     document.getElementById("counter").innerHTML = "次数: " + clickCount;
-    $('#eg').progress('set progress', stored_click_count);
+    $('#eg').progress('set progress', clickCount);
 }
 
 window.onload = onPageLoad()
